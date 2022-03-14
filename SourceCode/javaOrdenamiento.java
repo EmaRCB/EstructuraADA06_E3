@@ -34,41 +34,45 @@ public class javaOrdenamiento {
             fr = new FileReader(this.ArchivoCSVEntrada);
             String linea = "";
             BufferedReader br = new BufferedReader(fr);
-            int contar = 0;
-            int yes = 0;
+            int skip = 0;
             while ((linea = br.readLine()) != null) {
                 noVacio = true;
                 String[] datosLinea = linea.split(","); // lee una nueva celda cuando lee una coma
 
                 if (datosLinea.length != 12) {
                     numColumnas = true;
-                    // JOptionPane.showMessageDialog(null, "El archivo no tiene el numero de
-                    // columnas esperadas");
-                    contar++;
+                    JOptionPane.showMessageDialog(null, "El archivo no tiene el numero de columnas esperadas");
+
                     // break;
                 } else {
                     numColumnas = true;
-                    yes++;
+
                 }
 
-                String movie_id = datosLinea[0].trim();
-                String movie_title = datosLinea[1].trim();
-                String duration = datosLinea[2].trim();
-                String color = datosLinea[3].trim();
-                String language = datosLinea[4].trim();
-                String country = datosLinea[5].trim();
-                String content_rating = datosLinea[6].trim();
-                String budget = datosLinea[7].trim();
-                String title_year = datosLinea[8].trim();
-                String imdb_score = datosLinea[9].trim();
-                String aspect_ratio = datosLinea[10].trim();
-                String movie_imdb_link = datosLinea[11].trim();
+                if (skip == 0) {
+                    skip++;
+                } else {
+                    String movie_id = datosLinea[0].trim();
+                    String movie_title = datosLinea[1].trim();
+                    String duration = datosLinea[2].trim();
+                    String color = datosLinea[3].trim();
+                    String language = datosLinea[4].trim();
+                    String country = datosLinea[5].trim();
+                    String content_rating = datosLinea[6].trim();
+                    String budget = datosLinea[7].trim();
+                    String title_year = datosLinea[8].trim();
+                    String imdb_score = datosLinea[9].trim();
+                    String aspect_ratio = datosLinea[10].trim();
+                    String movie_imdb_link = datosLinea[11].trim();
 
-                Movie a = new Movie(movie_id, movie_title, duration, color, language, country, content_rating, budget,
-                        title_year, imdb_score, aspect_ratio, movie_imdb_link);
-                this.peliculas.add(a);
+                    Movie a = new Movie(movie_id, movie_title, duration, color, language, country, content_rating,
+                            budget,
+                            title_year, imdb_score, aspect_ratio, movie_imdb_link);
+
+                    this.peliculas.add(a);
+                }
             }
-            System.out.println("YES: " + yes + "NO: " + contar);
+
             if (!noVacio && (linea = br.readLine()) == null) {
                 JOptionPane.showMessageDialog(null, "El archivo seleccionado esta vacio");
             }
@@ -101,6 +105,8 @@ public class javaOrdenamiento {
         try {
             fw = new FileWriter(this.ArchivoCSVSalida);
             BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(
+                    "movie_id,movie_title,duration,color,language,country,content_rating,budget,title_year,imdb_score,aspect_ratio,movie_imdb_link\n");
             String lineaTexto = "";
             for (Movie c : this.peliculas) {
                 String text_movie_id = c.getMovie_id();
