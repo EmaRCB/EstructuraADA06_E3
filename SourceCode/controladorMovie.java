@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-public class javaOrdenamiento {
+public class controladorMovie {
     private String ArchivoCSVEntrada;
     private String ArchivoCSVSalida;
     private ArrayList<Movie> peliculas;
@@ -17,7 +17,7 @@ public class javaOrdenamiento {
     boolean numColumnas = false;
     boolean procesoCompletado = false;
 
-    public javaOrdenamiento(String archivoCSVEntrada, String archivoCSVSalida, ArrayList<Movie> peliculas) {
+    public controladorMovie(String archivoCSVEntrada, String archivoCSVSalida, ArrayList<Movie> peliculas) {
         this.ArchivoCSVEntrada = archivoCSVEntrada;
         this.ArchivoCSVSalida = archivoCSVSalida;
 
