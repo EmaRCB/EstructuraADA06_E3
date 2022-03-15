@@ -7,14 +7,14 @@ public class Movie {
     private String language;
     private String country;
     private String content_rating;
-    private String budget;
-    private String title_year;
-    private String imdb_score;
-    private String aspect_ratio;
+    private int budget;
+    private int title_year;
+    private float imdb_score;
+    private float aspect_ratio;
     private String movie_imdb_link;
 
     public Movie(int movie_id, String movie_title, int duration, String color, String language, String country,
-            String content_rating, String budget, String title_year, String imdb_score, String aspect_ratio,
+            String content_rating, int budget, int title_year, float imdb_score, float aspect_ratio,
             String movie_imdb_link) {
         this.movie_id = movie_id;
         this.movie_title = movie_title;
@@ -131,56 +131,56 @@ public class Movie {
     /**
      * @return String
      */
-    public String getBudget() {
+    public int getBudget() {
         return budget;
     }
 
     /**
      * @param budget
      */
-    public void setBudget(String budget) {
+    public void setBudget(int budget) {
         this.budget = budget;
     }
 
     /**
      * @return String
      */
-    public String getTitle_year() {
+    public int getTitle_year() {
         return title_year;
     }
 
     /**
      * @param title_year
      */
-    public void setTitle_year(String title_year) {
+    public void setTitle_year(int title_year) {
         this.title_year = title_year;
     }
 
     /**
      * @return String
      */
-    public String getImdb_score() {
+    public float getImdb_score() {
         return imdb_score;
     }
 
     /**
      * @param imdb_score
      */
-    public void setImdb_score(String imdb_score) {
+    public void setImdb_score(float imdb_score) {
         this.imdb_score = imdb_score;
     }
 
     /**
      * @return String
      */
-    public String getAspect_ratio() {
+    public float getAspect_ratio() {
         return aspect_ratio;
     }
 
     /**
      * @param aspect_ratio
      */
-    public void setAspect_ratio(String aspect_ratio) {
+    public void setAspect_ratio(float aspect_ratio) {
         this.aspect_ratio = aspect_ratio;
     }
 

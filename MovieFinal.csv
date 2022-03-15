@@ -3,7 +3,7 @@ movie_id,movie_title,duration,color,language,country,content_rating,budget,title
 2,Pirates of the Caribbean: At World's End ,169,Color,English,USA,PG-13,300000000,2007,7.1,2.35,http://www.imdb.com/title/tt0449088/?ref_=fn_tt_tt_1
 3,Spectre ,148,Color,English,UK,PG-13,245000000,2015,6.8,2.35,http://www.imdb.com/title/tt2379713/?ref_=fn_tt_tt_1
 4,The Dark Knight Rises ,164,Color,English,USA,PG-13,250000000,2012,8.5,2.35,http://www.imdb.com/title/tt1345836/?ref_=fn_tt_tt_1
-5,Star Wars: Episode VII - The Force Awakens ,345,Color,English,USA,PG-13,9830000000,2018,7.1,1.78,http://www.imdb.com/title/tt5289954/?ref_=fn_tt_tt_1
+5,Star Wars: Episode VII - The Force Awakens ,345,Color,English,USA,PG-13,983000000,2018,7.1,1.78,http://www.imdb.com/title/tt5289954/?ref_=fn_tt_tt_1
 6,John Carter ,132,Color,English,USA,PG-13,263700000,2012,6.6,2.35,http://www.imdb.com/title/tt0401729/?ref_=fn_tt_tt_1
 7,Spider-Man 3 ,156,Color,English,USA,PG-13,258000000,2007,6.2,2.35,http://www.imdb.com/title/tt0413300/?ref_=fn_tt_tt_1
 8,Tangled ,100,Color,English,USA,PG,260000000,2010,7.8,1.85,http://www.imdb.com/title/tt0398286/?ref_=fn_tt_tt_1
@@ -20,7 +20,7 @@ movie_id,movie_title,duration,color,language,country,content_rating,budget,title
 19,Pirates of the Caribbean: On Stranger Tides ,136,Color,English,USA,PG-13,250000000,2011,6.7,2.35,http://www.imdb.com/title/tt1298650/?ref_=fn_tt_tt_1
 20,Men in Black 3 ,106,Color,English,USA,PG-13,225000000,2012,6.8,1.85,http://www.imdb.com/title/tt1409024/?ref_=fn_tt_tt_1
 21,The Hobbit: The Battle of the Five Armies ,164,Color,English,New Zealand,PG-13,250000000,2014,7.5,2.35,http://www.imdb.com/title/tt2310332/?ref_=fn_tt_tt_1
-22,The Amazing Spider-Man ,153,Color,English,USA,PG-13,230000000,2012,7,2.35,http://www.imdb.com/title/tt0948470/?ref_=fn_tt_tt_1
+22,The Amazing Spider-Man ,153,Color,English,USA,PG-13,230000000,2012,7.0,2.35,http://www.imdb.com/title/tt0948470/?ref_=fn_tt_tt_1
 23,Robin Hood ,156,Color,English,USA,PG-13,200000000,2010,6.7,2.35,http://www.imdb.com/title/tt0955308/?ref_=fn_tt_tt_1
 24,The Hobbit: The Desolation of Smaug ,186,Color,English,USA,PG-13,225000000,2013,7.9,2.35,http://www.imdb.com/title/tt1170358/?ref_=fn_tt_tt_1
 25,The Golden Compass ,113,Color,English,USA,PG-13,180000000,2007,6.1,2.35,http://www.imdb.com/title/tt0385752/?ref_=fn_tt_tt_1
@@ -28,14 +28,14 @@ movie_id,movie_title,duration,color,language,country,content_rating,budget,title
 27,Titanic ,194,Color,English,USA,PG-13,200000000,1997,7.7,2.35,http://www.imdb.com/title/tt0120338/?ref_=fn_tt_tt_1
 28,Captain America: Civil War ,147,Color,English,USA,PG-13,250000000,2016,8.2,2.35,http://www.imdb.com/title/tt3498820/?ref_=fn_tt_tt_1
 29,Battleship ,131,Color,English,USA,PG-13,209000000,2012,5.9,2.35,http://www.imdb.com/title/tt1440129/?ref_=fn_tt_tt_1
-30,Jurassic World ,124,Color,English,USA,PG-13,150000000,2015,7,2,http://www.imdb.com/title/tt0369610/?ref_=fn_tt_tt_1
+30,Jurassic World ,124,Color,English,USA,PG-13,150000000,2015,7.0,2.0,http://www.imdb.com/title/tt0369610/?ref_=fn_tt_tt_1
 31,Skyfall ,143,Color,English,UK,PG-13,200000000,2012,7.8,2.35,http://www.imdb.com/title/tt1074638/?ref_=fn_tt_tt_1
 32,Spider-Man 2 ,135,Color,English,USA,PG-13,200000000,2004,7.3,2.35,http://www.imdb.com/title/tt0316654/?ref_=fn_tt_tt_1
 33,Iron Man 3 ,195,Color,English,USA,PG-13,200000000,2013,7.2,2.35,http://www.imdb.com/title/tt1300854/?ref_=fn_tt_tt_1
 34,Alice in Wonderland ,108,Color,English,USA,PG,200000000,2010,6.5,1.85,http://www.imdb.com/title/tt1014759/?ref_=fn_tt_tt_1
 35,X-Men: The Last Stand ,104,Color,English,Canada,PG-13,210000000,2006,6.8,2.35,http://www.imdb.com/title/tt0376994/?ref_=fn_tt_tt_1
 36,Monsters University ,104,Color,English,USA,G,200000000,2013,7.3,1.85,http://www.imdb.com/title/tt1453405/?ref_=fn_tt_tt_1
-37,Transformers: Revenge of the Fallen ,150,Color,English,USA,PG-13,200000000,2009,6,2.35,http://www.imdb.com/title/tt1055369/?ref_=fn_tt_tt_1
+37,Transformers: Revenge of the Fallen ,150,Color,English,USA,PG-13,200000000,2009,6.0,2.35,http://www.imdb.com/title/tt1055369/?ref_=fn_tt_tt_1
 38,Transformers: Age of Extinction ,165,Color,English,USA,PG-13,210000000,2014,5.7,2.35,http://www.imdb.com/title/tt2109248/?ref_=fn_tt_tt_1
 39,Oz the Great and Powerful ,130,Color,English,USA,PG,215000000,2013,6.4,2.35,http://www.imdb.com/title/tt1623205/?ref_=fn_tt_tt_1
 40,The Amazing Spider-Man 2 ,142,Color,English,USA,PG-13,200000000,2014,6.7,2.35,http://www.imdb.com/title/tt1872181/?ref_=fn_tt_tt_1
@@ -45,7 +45,7 @@ movie_id,movie_title,duration,color,language,country,content_rating,budget,title
 44,Toy Story 3 ,103,Color,English,USA,G,200000000,2010,8.3,1.85,http://www.imdb.com/title/tt0435761/?ref_=fn_tt_tt_1
 45,Terminator Salvation ,118,Color,English,USA,PG-13,200000000,2009,6.6,2.35,http://www.imdb.com/title/tt0438488/?ref_=fn_tt_tt_1
 46,Furious 7 ,140,Color,English,USA,PG-13,190000000,2015,7.2,2.35,http://www.imdb.com/title/tt2820852/?ref_=fn_tt_tt_1
-47,World War Z ,123,Color,English,USA,PG-13,190000000,2013,7,2.35,http://www.imdb.com/title/tt0816711/?ref_=fn_tt_tt_1
-48,X-Men: Days of Future Past ,149,Color,English,USA,PG-13,200000000,2014,8,2.35,http://www.imdb.com/title/tt1877832/?ref_=fn_tt_tt_1
+47,World War Z ,123,Color,English,USA,PG-13,190000000,2013,7.0,2.35,http://www.imdb.com/title/tt0816711/?ref_=fn_tt_tt_1
+48,X-Men: Days of Future Past ,149,Color,English,USA,PG-13,200000000,2014,8.0,2.35,http://www.imdb.com/title/tt1877832/?ref_=fn_tt_tt_1
 49,Star Trek Into Darkness ,132,Color,English,USA,PG-13,190000000,2013,7.8,2.35,http://www.imdb.com/title/tt1408101/?ref_=fn_tt_tt_1
 50,Jack the Giant Slayer ,114,Color,English,USA,PG-13,195000000,2013,6.3,2.35,http://www.imdb.com/title/tt1351685/?ref_=fn_tt_tt_1

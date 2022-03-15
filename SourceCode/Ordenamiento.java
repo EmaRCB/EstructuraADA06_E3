@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-public class javaOrdenamiento {
+public class Ordenamiento {
     private String ArchivoCSVEntrada;
     private String ArchivoCSVSalida;
     private ArrayList<Movie> peliculas;
@@ -17,7 +17,7 @@ public class javaOrdenamiento {
     boolean numColumnas = false;
     boolean procesoCompletado = false;
 
-    public javaOrdenamiento(String archivoCSVEntrada, String archivoCSVSalida, ArrayList<Movie> peliculas) {
+    public Ordenamiento(String archivoCSVEntrada, String archivoCSVSalida, ArrayList<Movie> peliculas) {
         this.ArchivoCSVEntrada = archivoCSVEntrada;
         this.ArchivoCSVSalida = archivoCSVSalida;
 
@@ -59,10 +59,10 @@ public class javaOrdenamiento {
                     String language = datosLinea[4].trim();
                     String country = datosLinea[5].trim();
                     String content_rating = datosLinea[6].trim();
-                    String budget = datosLinea[7].trim();
-                    String title_year = datosLinea[8].trim();
-                    String imdb_score = datosLinea[9].trim();
-                    String aspect_ratio = datosLinea[10].trim();
+                    int budget = Integer.parseInt(datosLinea[7].trim());
+                    int title_year = Integer.parseInt(datosLinea[8].trim());
+                    float imdb_score = Float.parseFloat(datosLinea[9].trim());
+                    float aspect_ratio = Float.parseFloat(datosLinea[10].trim());
                     String movie_imdb_link = datosLinea[11].trim();
 
                     Movie a = new Movie(movie_id, movie_title, duration, color, language, country, content_rating,
@@ -100,6 +100,7 @@ public class javaOrdenamiento {
     }
 
     public void elegirTipoOrdenamiento() {
+
         Insertion(peliculas);
     }
 
@@ -120,10 +121,10 @@ public class javaOrdenamiento {
                 String text_language = c.getLanguage();
                 String text_country = c.getCountry();
                 String text_content_rating = c.getContent_rating();
-                String text_budget = c.getBudget();
-                String text_title_year = c.getTitle_year();
-                String text_imdb_score = c.getImdb_score();
-                String text_aspect_ratio = c.getAspect_ratio();
+                int text_budget = c.getBudget();
+                int text_title_year = c.getTitle_year();
+                float text_imdb_score = c.getImdb_score();
+                float text_aspect_ratio = c.getAspect_ratio();
                 String text_movie_imdb_link = c.getMovie_imdb_link();
 
                 lineaTexto = text_movie_id + "," + text_movie_title + "," + text_duration + "," + text_color + "," +
@@ -148,12 +149,10 @@ public class javaOrdenamiento {
         int n = 0;
         for (Movie a : this.peliculas) {
             n++;
-            // System.out.println(a.getMovie_id());
         }
         int[] array = new int[n];
 
         for (Movie a : this.peliculas) {
-            // System.out.println(a.getDuration());
             array[a.getMovie_id() - 1] = a.getDuration();
         }
 

@@ -9,7 +9,7 @@ public class Main {
 
         ArrayList<Movie> peliculas = new ArrayList<Movie>();
 
-        javaOrdenamiento c = new javaOrdenamiento(ArchivoCSVEntrada, ArchivoCSVSalida, peliculas);
+        Ordenamiento c = new Ordenamiento(ArchivoCSVEntrada, ArchivoCSVSalida, peliculas);
 
         c.leerArchivoCSV(); // lee el archivo ListaAlumnos.csv
         // c.mostrarPeliculas(); // imprime el listado de Alumnos
