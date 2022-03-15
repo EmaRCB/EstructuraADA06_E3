@@ -15,6 +15,7 @@ public class Main {
         // c.mostrarPeliculas(); // imprime el listado de Alumnos
 
         if (c.noVacio && c.numColumnas) {
+            c.elegirTipoOrdenamiento();
             int reply = JOptionPane.showConfirmDialog(null, "¿Desea crear el archivo CSV?",
                     "Creacion del archivo CSV", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {

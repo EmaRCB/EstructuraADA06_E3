@@ -52,9 +52,9 @@ public class javaOrdenamiento {
                 if (skip == 0) {
                     skip++;
                 } else {
-                    String movie_id = datosLinea[0].trim();
+                    int movie_id = Integer.parseInt(datosLinea[0].trim());
                     String movie_title = datosLinea[1].trim();
-                    String duration = datosLinea[2].trim();
+                    int duration = Integer.parseInt(datosLinea[2].trim());
                     String color = datosLinea[3].trim();
                     String language = datosLinea[4].trim();
                     String country = datosLinea[5].trim();
@@ -99,6 +99,10 @@ public class javaOrdenamiento {
         }
     }
 
+    public void elegirTipoOrdenamiento() {
+        Insertion(peliculas);
+    }
+
     public void generarArchivoCSV() {
         // Scanner sc = new Scanner(System.in);
         FileWriter fw;
@@ -109,9 +113,9 @@ public class javaOrdenamiento {
                     "movie_id,movie_title,duration,color,language,country,content_rating,budget,title_year,imdb_score,aspect_ratio,movie_imdb_link\n");
             String lineaTexto = "";
             for (Movie c : this.peliculas) {
-                String text_movie_id = c.getMovie_id();
+                int text_movie_id = c.getMovie_id();
                 String text_movie_title = c.getMovie_title();
-                String text_duration = c.getDuration();
+                int text_duration = c.getDuration();
                 String text_color = c.getColor();
                 String text_language = c.getLanguage();
                 String text_country = c.getCountry();
@@ -136,6 +140,50 @@ public class javaOrdenamiento {
             e.printStackTrace();
         }
 
+    }
+
+    public void Insertion(ArrayList<Movie> peliculas) {
+        System.out.println("insertion sort");
+        // Sort the list
+        int n = 0;
+        for (Movie a : this.peliculas) {
+            n++;
+            // System.out.println(a.getMovie_id());
+        }
+        int[] array = new int[n];
+
+        for (Movie a : this.peliculas) {
+            // System.out.println(a.getDuration());
+            array[a.getMovie_id() - 1] = a.getDuration();
+        }
+
+        // arreglo antes de ser ordenado
+        for (int i = 0; i < n; ++i)
+            System.out.print(array[i] + " ");
+
+        System.out.println();
+
+        for (int i = 1; i < n; ++i) {
+            int key = array[i];
+            int j = i - 1;
+
+            /*
+             * Move elements of arr[0..i-1], that are
+             * greater than key, to one position ahead
+             * of their current position
+             */
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j = j - 1;
+            }
+            array[j + 1] = key;
+        }
+
+        // Arreglo despues de ser odenado
+        for (int i = 0; i < n; ++i)
+            System.out.print(array[i] + " ");
+
+        System.out.println();
     }
 
 }

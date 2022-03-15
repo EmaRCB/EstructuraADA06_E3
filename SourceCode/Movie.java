@@ -1,8 +1,8 @@
 public class Movie {
 
-    private String movie_id;
+    private int movie_id;
     private String movie_title;
-    private String duration;
+    private int duration;
     private String color;
     private String language;
     private String country;
@@ -13,7 +13,7 @@ public class Movie {
     private String aspect_ratio;
     private String movie_imdb_link;
 
-    public Movie(String movie_id, String movie_title, String duration, String color, String language, String country,
+    public Movie(int movie_id, String movie_title, int duration, String color, String language, String country,
             String content_rating, String budget, String title_year, String imdb_score, String aspect_ratio,
             String movie_imdb_link) {
         this.movie_id = movie_id;
@@ -33,14 +33,14 @@ public class Movie {
     /**
      * @return String
      */
-    public String getMovie_id() {
+    public int getMovie_id() {
         return movie_id;
     }
 
     /**
      * @param movie_id
      */
-    public void setMovie_id(String movie_id) {
+    public void setMovie_id(int movie_id) {
         this.movie_id = movie_id;
     }
 
@@ -61,14 +61,14 @@ public class Movie {
     /**
      * @return String
      */
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
     /**
      * @param duration
      */
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
@@ -196,6 +196,17 @@ public class Movie {
      */
     public void setMovie_imdb_link(String movie_imdb_link) {
         this.movie_imdb_link = movie_imdb_link;
+    }
+
+    public int compareTo(Movie peliculas) {
+        int res = 0;
+        if (this.movie_id < peliculas.getMovie_id()) {
+            res = -1;
+        }
+        if (this.movie_id > peliculas.getMovie_id()) {
+            res = 1;
+        }
+        return res;
     }
 
     /**
