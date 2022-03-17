@@ -162,6 +162,7 @@ public class Ordenamiento {
 
         System.out.println();
 
+        // metodo de ordenamiento
         for (int i = 1; i < n; ++i) {
             int key = array[i];
             int j = i - 1;
