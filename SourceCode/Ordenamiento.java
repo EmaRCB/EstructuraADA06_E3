@@ -1,7 +1,6 @@
 
 import java.util.ArrayList;
 
-
 public class Ordenamiento {
     private String NombreArcLectura;
     private String NombreArcEscritura;
@@ -20,11 +19,10 @@ public class Ordenamiento {
         }
     }
 
-
     public void mostrarPeliculas() {
         // Se imprime el listado de alumnos
         for (Movie a : this.peliculas) {
-            System.out.println(a.toString());
+            System.out.println(a.getMovie_id());
         }
     }
 
@@ -32,7 +30,6 @@ public class Ordenamiento {
 
         Insertion(peliculas);
     }
-
 
     public void Insertion(ArrayList<Movie> peliculas) {
         System.out.println("insertion sort");
