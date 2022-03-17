@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Ordenamiento {
     private String NombreArcLectura;
     private String NombreArcEscritura;
@@ -22,56 +24,18 @@ public class Ordenamiento {
     public void mostrarPeliculas() {
         // Se imprime el listado de alumnos
         for (Movie a : this.peliculas) {
-            System.out.println(a.getMovie_id());
+            System.out.println(a.toString());
         }
     }
 
     public void elegirTipoOrdenamiento() {
+        InsertionSort o = new InsertionSort(peliculas);
 
-        Insertion(peliculas);
-    }
-
-    public void Insertion(ArrayList<Movie> peliculas) {
-        System.out.println("insertion sort");
-        // Sort the list
-        int n = 0;
-        for (Movie a : this.peliculas) {
-            n++;
+        int reply = JOptionPane.showConfirmDialog(null, "¿Desea ordenar mediante el metodo de InsertionSort?",
+                "Creacion del archivo CSV", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            o.Insertion(peliculas);
         }
-        int[] array = new int[n];
-
-        for (Movie a : this.peliculas) {
-            array[a.getMovie_id() - 1] = a.getDuration();
-        }
-
-        // arreglo antes de ser ordenado
-        for (int i = 0; i < n; ++i)
-            System.out.print(array[i] + " ");
-
-        System.out.println();
-
-        // metodo de ordenamiento
-        for (int i = 1; i < n; ++i) {
-            int key = array[i];
-            int j = i - 1;
-
-            /*
-             * Move elements of arr[0..i-1], that are
-             * greater than key, to one position ahead
-             * of their current position
-             */
-            while (j >= 0 && array[j] > key) {
-                array[j + 1] = array[j];
-                j = j - 1;
-            }
-            array[j + 1] = key;
-        }
-
-        // Arreglo despues de ser odenado
-        for (int i = 0; i < n; ++i)
-            System.out.print(array[i] + " ");
-
-        System.out.println();
     }
 
 }

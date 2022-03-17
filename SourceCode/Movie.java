@@ -1,11 +1,11 @@
 public class Movie {
 
-    private int movie_id;
-    private String movie_title;
-    private int duration;
-    private String color;
-    private String language;
-    private String country;
+    public int movie_id;
+    public String movie_title;
+    public int duration;
+    public String color;
+    public String language;
+    public String country;
     private String content_rating;
     private int budget;
     private int title_year;
@@ -28,6 +28,15 @@ public class Movie {
         this.imdb_score = imdb_score;
         this.aspect_ratio = aspect_ratio;
         this.movie_imdb_link = movie_imdb_link;
+    }
+
+    public Movie(int movie_id, String movie_title, int duration, String color, String language, String country) {
+        this.movie_id = movie_id;
+        this.movie_title = movie_title;
+        this.duration = duration;
+        this.color = color;
+        this.language = language;
+        this.country = country;
     }
 
     /**
