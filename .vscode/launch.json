@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch InsertionSort",
+            "request": "launch",
+            "mainClass": "InsertionSort",
+            "projectName": "EstructuraADA06_E3_96808cb9"
+        },
+        {
+            "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "Main",
