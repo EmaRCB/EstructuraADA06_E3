@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,47 +19,17 @@ public class RadixSort {
         }
     }
 
-    static int getMax(int array[], int n) {
-        int MAX = array[0];
+    public void Radix(ArrayList<Movie> peliculas) {
+        System.out.println("---- radix sort ----");
+        int n = peliculas.size();
+        sort(peliculas, n);
+        generarArchivoCSV();
 
-        for (int i = 1; i < n; i++){
-            if (array[i] > MAX){
-                MAX = array[i];
-            }
-        }
-
-
-        return MAX;
-    }
-    public static void Radix(ArrayList<Movie> peliculas2, int n) {
-        int m = getMax(peliculas2, n);
-
-        for (int exp = 1; m / exp > 0; exp *= 10)
-            sort(peliculas2, n, exp);
     }
 
-    static void sort(int arr[], int n, int exp) {
-        int output[] = new int[n];
-        int i;
-        int count[] = new int[10];
-        Arrays.fill(count, 0);
+    public static void sort(ArrayList<Movie> peliculas, int n) {
 
-        for (i = 0; i < n; i++)
-            count[(arr[i] / exp) % 10]++;
-
-        for (i = 1; i < 10; i++)
-            count[i] += count[i - 1];
-
-        for (i = n - 1; i >= 0; i--) {
-            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-            count[(arr[i] / exp) % 10]--;
-        }
-
-        for (i = 0; i < n; i++)
-            arr[i] = output[i];
-    }
-
-    public static void swap(ArrayList<Movie> peliculas, int i, int j) {
+        int i = 1;
         Movie key = new Movie(0, "", 0, "", "", "");
         key.movie_id = peliculas.get(i).movie_id;
         key.movie_title = peliculas.get(i).movie_title;
@@ -69,33 +38,69 @@ public class RadixSort {
         key.language = peliculas.get(i).language;
         key.country = peliculas.get(i).country;
 
-        int temp = peliculas.get(i).duration;
-        peliculas.get(i).duration = peliculas.get(j).duration;
-        peliculas.get(j).duration = temp;
+        // Find the maximum number to know number of digits
+        int m = getMax(peliculas, n);
 
-        String temp2 = peliculas.get(i).color;
-        peliculas.get(i).color = peliculas.get(j).color;
-        peliculas.get(j).color = temp2;
+        // Do counting sort for every digit. Note that
+        // instead of passing digit number, exp is passed.
+        // exp is 10^i where i is current digit number
+        for (int exp = 1; m / exp > 0; exp *= 10) {
+            countSort(peliculas, n, exp);
+        }
 
-        String temp3 = peliculas.get(i).country;
-        peliculas.get(i).country = peliculas.get(j).country;
-        peliculas.get(j).country = temp3;
-
-        String temp4 = peliculas.get(i).language;
-        peliculas.get(i).language = peliculas.get(j).language;
-        peliculas.get(j).language = temp4;
-
-        int temp5 = peliculas.get(i).movie_id;
-        peliculas.get(i).movie_id = peliculas.get(j).movie_id;
-        peliculas.get(j).movie_id = temp5;
-
-        String temp6 = peliculas.get(i).movie_title;
-        peliculas.get(i).movie_title = peliculas.get(j).movie_title;
-        peliculas.get(j).movie_title = temp6;
-
-        peliculas.set(j, key);
     }
 
+    public static int getMax(ArrayList<Movie> peliculas, int n) {
+        int i = 1;
+        Movie key = new Movie(0, "", 0, "", "", "");
+        key.movie_id = peliculas.get(i).movie_id;
+        key.movie_title = peliculas.get(i).movie_title;
+        key.duration = peliculas.get(i).duration;
+        key.color = peliculas.get(i).color;
+        key.language = peliculas.get(i).language;
+        key.country = peliculas.get(i).country;
+        int mx = peliculas.get(0).duration;
+
+        for (i = 1; i < n; i++)
+            if ((peliculas.get(i).duration) > mx)
+                mx = peliculas.get(i).duration;
+        return mx;
+    }
+
+    public static void countSort(ArrayList<Movie> peliculas, int n, int exp) {
+        int output[] = new int[n]; // output array
+        int i = 1;
+        int count[] = new int[peliculas.size()];
+        Arrays.fill(count, 0);
+
+        Movie key = new Movie(0, "", 0, "", "", "");
+        key.movie_id = peliculas.get(i).movie_id;
+        key.movie_title = peliculas.get(i).movie_title;
+        key.duration = peliculas.get(i).duration;
+        key.color = peliculas.get(i).color;
+        key.language = peliculas.get(i).language;
+        key.country = peliculas.get(i).country;
+
+        // Store count of occurrences in count[]
+        for (i = 0; i < n; i++)
+            count[(peliculas.get(i).duration / exp) % 10]++;
+
+        // Change count[i] so that count[i] now contains
+        // actual position of this digit in output[]
+        for (i = 1; i < 10; i++)
+            count[i] += count[i - 1];
+
+        // Build the output array
+        for (i = n - 1; i >= 0; i--) {
+            output[count[(peliculas.get(i).duration / exp) % 10] - 1] = peliculas.get(i).duration;
+            count[(peliculas.get(i).duration / exp) % 10]--;
+        }
+
+        // Copy the output array to arr[], so that arr[] now
+        // contains sorted numbers according to current digit
+        for (i = 0; i < n; i++)
+            peliculas.get(i).duration = output[i];
+    }
 
     public void generarArchivoCSV() {
         // Scanner sc = new Scanner(System.in);
@@ -134,5 +139,4 @@ public class RadixSort {
 
     }
 
-    
 }
