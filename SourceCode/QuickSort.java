@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 public class QuickSort {
     private ArrayList<Movie> peliculas;
     private String nombreArcEscritura = "MovieQuick.csv";
+    public int numComp = 0;
+    public int numInt = 0;
 
     public QuickSort(ArrayList<Movie> peliculas) {
         if (peliculas == null) {
@@ -23,6 +25,9 @@ public class QuickSort {
         sort(peliculas, 0, (peliculas.size() - 1));
 
         generarArchivoCSV();
+
+        System.out.println("numero de comparaciones: " + numComp);
+        System.out.println("numero de intercambios: " + numInt);
 
     }
 

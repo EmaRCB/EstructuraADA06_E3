@@ -7,10 +7,9 @@ import javax.swing.JOptionPane;
 
 public class InsertionSort {
     private ArrayList<Movie> peliculas;
-    public int duration;
-    public String color;
-    public String language;
     private String nombreArcEscritura = "MovieInsertion.csv";
+    public int numComp = 0;
+    public int numInt = 0;
 
     public InsertionSort(ArrayList<Movie> peliculas) {
         if (peliculas == null) {
@@ -39,9 +38,15 @@ public class InsertionSort {
             while ((j > 0) && (peliculas.get(j - 1).duration > key.duration)) {
                 peliculas.set(j, peliculas.get(j - 1));
                 j--;
+                numComp++;
+                numInt++;
             }
+            numComp++;
             peliculas.set(j, key);
         }
+
+        System.out.println("numero de comparaciones: " + numComp);
+        System.out.println("numero de intercambios: " + numInt);
 
         generarArchivoCSV();
     }

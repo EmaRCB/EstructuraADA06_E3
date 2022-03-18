@@ -45,7 +45,7 @@ movie_id,movie_title,duration,color,language,country,content_rating,budget,title
 44,Toy Story 3 ,103,Color,English,USA,G,200000000,2010,8.3,1.85,http://www.imdb.com/title/tt0435761/?ref_=fn_tt_tt_1
 45,Terminator Salvation ,118,Color,English,USA,PG-13,200000000,2009,6.6,2.35,http://www.imdb.com/title/tt0438488/?ref_=fn_tt_tt_1
 46,Furious 7 ,140,Color,English,USA,PG-13,190000000,2015,7.2,2.35,http://www.imdb.com/title/tt2820852/?ref_=fn_tt_tt_1
-47,World War Z ,123,Color,English,USA,PG-13,190000000,2013,7,2.35,http://www.imdb.com/title/tt0816711/?ref_=fn_tt_tt_1
-48,X-Men: Days of Future Past ,149,Color,English,USA,PG-13,200000000,2014,8,2.35,http://www.imdb.com/title/tt1877832/?ref_=fn_tt_tt_1
-49,Star Trek Into Darkness ,132,Color,English,USA,PG-13,190000000,2013,7.8,2.35,http://www.imdb.com/title/tt1408101/?ref_=fn_tt_tt_1
-50,Jack the Giant Slayer ,114,Color,English,USA,PG-13,195000000,2013,6.3,2.35,http://www.imdb.com/title/tt1351685/?ref_=fn_tt_tt_1
+47,John Carter ,129.3756098,Color,English,USA,PG-13,184797561,2011.062195,6.760487805,2.255853659,http://www.imdb.com/title/tt0401729/?ref_=fn_tt_tt_2
+48,Spider-Man 3 ,128.789547,Color,English,USA,PG-13,183351567.9,2011.086063,6.752334495,2.255261324,http://www.imdb.com/title/tt0413300/?ref_=fn_tt_tt_2
+49,Tangled ,128.2034843,Color,English,USA,PG,181905574.9,2011.10993,6.744181185,2.25466899,http://www.imdb.com/title/tt0398286/?ref_=fn_tt_tt_2
+50,Avengers: Age of Ultron ,127.6174216,Color,English,USA,PG-14,180459581.9,2011.133798,6.736027875,2.254076655,http://www.imdb.com/title/tt2395427/?ref_=fn_tt_tt_2
