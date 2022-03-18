@@ -26,7 +26,6 @@ public class QuickSort {
 
     }
 
-   
     public static void swap(ArrayList<Movie> peliculas, int i, int j) {
         Movie key = new Movie(0, "", 0, "", "", "");
         key.movie_id = peliculas.get(i).movie_id;
@@ -160,30 +159,31 @@ public class QuickSort {
         }
 
     }
-/*
-    public static void main(String[] args) {
-        String Origen = "C:\\repos\\EstructuraADA06_E3";
-        String NombreArcLectura = Origen + "\\Movie.csv";
-        String nombreArcEscritura = Origen + "\\MovieQuick.csv";
-        
-
-        ArrayList<Movie> peliculas = new ArrayList<Movie>();
-        QuickSort q = new QuickSort(peliculas);
-        System.out.println("hola");
-        controladorCSV c = new controladorCSV(NombreArcLectura, nombreArcEscritura, peliculas);
-        Ordenamiento o = new Ordenamiento(peliculas);
-
-        c.leerArchivoCSV(); // lee el archivo
-        o.mostrarPeliculas(); // imprime el listado de peliculas
-
-        if (c.noVacio && c.numColumnas) {
-            //o.elegirTipoOrdenamiento();
-            q.Quick(peliculas);
-            
-            o.mostrarPeliculas(); // imprime el listado de peliculas
-
-            JOptionPane.showMessageDialog(null, "Fin del proceso");
-        }
-    }
-    */
+    /*
+     * public static void main(String[] args) {
+     * String Origen = "C:\\repos\\EstructuraADA06_E3";
+     * String NombreArcLectura = Origen + "\\Movie.csv";
+     * String nombreArcEscritura = Origen + "\\MovieQuick.csv";
+     * 
+     * 
+     * ArrayList<Movie> peliculas = new ArrayList<Movie>();
+     * QuickSort q = new QuickSort(peliculas);
+     * System.out.println("hola");
+     * controladorCSV c = new controladorCSV(NombreArcLectura, nombreArcEscritura,
+     * peliculas);
+     * Ordenamiento o = new Ordenamiento(peliculas);
+     * 
+     * c.leerArchivoCSV(); // lee el archivo
+     * o.mostrarPeliculas(); // imprime el listado de peliculas
+     * 
+     * if (c.noVacio && c.numColumnas) {
+     * //o.elegirTipoOrdenamiento();
+     * q.Quick(peliculas);
+     * 
+     * o.mostrarPeliculas(); // imprime el listado de peliculas
+     * 
+     * JOptionPane.showMessageDialog(null, "Fin del proceso");
+     * }
+     * }
+     */
 }
