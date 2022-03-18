@@ -7,7 +7,7 @@ public class Movie {
     public String language;
     public String country;
     private String content_rating;
-    private int budget;
+    public int budget;
     private int title_year;
     private float imdb_score;
     private float aspect_ratio;
@@ -37,6 +37,15 @@ public class Movie {
         this.color = color;
         this.language = language;
         this.country = country;
+    }
+
+    public Movie(int movie_id, String movie_title, String color, String language, String country, int budget) {
+        this.movie_id = movie_id;
+        this.movie_title = movie_title;
+        this.color = color;
+        this.language = language;
+        this.country = country;
+        this.budget = budget;
     }
 
     /**

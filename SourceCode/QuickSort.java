@@ -27,17 +27,17 @@ public class QuickSort {
     }
 
     public static void swap(ArrayList<Movie> peliculas, int i, int j) {
-        Movie key = new Movie(0, "", 0, "", "", "");
+        Movie key = new Movie(0, "", "", "", "", 0);
         key.movie_id = peliculas.get(i).movie_id;
         key.movie_title = peliculas.get(i).movie_title;
-        key.duration = peliculas.get(i).duration;
         key.color = peliculas.get(i).color;
         key.language = peliculas.get(i).language;
         key.country = peliculas.get(i).country;
+        key.budget = peliculas.get(i).budget;
 
-        int temp = peliculas.get(i).duration;
-        peliculas.get(i).duration = peliculas.get(j).duration;
-        peliculas.get(j).duration = temp;
+        int temp = peliculas.get(i).budget;
+        peliculas.get(i).budget = peliculas.get(j).budget;
+        peliculas.get(j).budget = temp;
 
         String temp2 = peliculas.get(i).color;
         peliculas.get(i).color = peliculas.get(j).color;
@@ -74,13 +74,13 @@ public class QuickSort {
         Movie key = new Movie(0, "", 0, "", "", "");
         key.movie_id = peliculas.get(high).movie_id;
         key.movie_title = peliculas.get(high).movie_title;
-        key.duration = peliculas.get(high).duration;
+        key.budget = peliculas.get(high).budget;
         key.color = peliculas.get(high).color;
         key.language = peliculas.get(high).language;
         key.country = peliculas.get(high).country;
 
         // pivot
-        int pivot = peliculas.get(high).duration;
+        int pivot = peliculas.get(high).budget;
 
         // Index of smaller element and
         // indicates the right position
@@ -91,7 +91,7 @@ public class QuickSort {
 
             // If current element is smaller
             // than the pivot
-            if (peliculas.get(j).duration < pivot) {
+            if (peliculas.get(j).budget < pivot) {
 
                 // Increment index of
                 // smaller element
@@ -130,24 +130,24 @@ public class QuickSort {
             fw = new FileWriter(this.nombreArcEscritura);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(
-                    "movie_id,movie_title,duration,color,language,country\n");
+                    "movie_id,movie_title,color,language,country,budget\n");
             String lineaTexto = "";
             for (Movie c : this.peliculas) {
                 int text_movie_id = c.getMovie_id();
                 String text_movie_title = c.getMovie_title();
-                int text_duration = c.getDuration();
+                // int text_duration = c.getDuration();
                 String text_color = c.getColor();
                 String text_language = c.getLanguage();
                 String text_country = c.getCountry();
                 // String text_content_rating = c.getContent_rating();
-                // int text_budget = c.getBudget();
+                int text_budget = c.getBudget();
                 // int text_title_year = c.getTitle_year();
                 // float text_imdb_score = c.getImdb_score();
                 // float text_aspect_ratio = c.getAspect_ratio();
                 // String text_movie_imdb_link = c.getMovie_imdb_link();
 
-                lineaTexto = text_movie_id + "," + text_movie_title + "," + text_duration + "," + text_color + "," +
-                        text_language + "," + text_country + "," + "\n";
+                lineaTexto = text_movie_id + "," + text_movie_title + "," + text_color + "," +
+                        text_language + "," + text_country + "," + text_budget + "," + "\n";
                 bw.write(lineaTexto);
             }
             bw.flush();
