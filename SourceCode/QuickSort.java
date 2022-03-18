@@ -1,0 +1,141 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+public class QuickSort {
+    private ArrayList<Movie> peliculas;
+    private String nombreArcEscritura = "MovieQuick.csv";
+
+    public QuickSort(ArrayList<Movie> peliculas) {
+        if (peliculas == null) {
+            this.peliculas = new ArrayList<Movie>();
+        } else {
+            this.peliculas = peliculas;
+        }
+    }
+
+    public void Quick(ArrayList<Movie> peliculas) {
+        System.out.println("---- quick sort ----"); // borrar despues
+
+        sort(peliculas, 0, (peliculas.size() - 1));
+
+        generarArchivoCSV();
+
+    }
+
+    public static void swap(ArrayList<Movie> peliculas, int i, int j) {
+        Movie key = new Movie(0, "", 0, "", "", "");
+        key.movie_id = peliculas.get(i).movie_id;
+        key.movie_title = peliculas.get(i).movie_title;
+        key.duration = peliculas.get(i).duration;
+        key.color = peliculas.get(i).color;
+        key.language = peliculas.get(i).language;
+        key.country = peliculas.get(i).country;
+
+        int temp = peliculas.get(i).duration;
+        peliculas.get(i).duration = peliculas.get(j).duration;
+        peliculas.get(j).duration = temp;
+        peliculas.set(j, key);
+    }
+
+    /*
+     * This function takes last element as pivot, places
+     * the pivot element at its correct position in sorted
+     * array, and places all smaller (smaller than pivot)
+     * to left of pivot and all greater elements to right
+     * of pivot
+     */
+    public static int partition(ArrayList<Movie> peliculas, int low, int high) {
+
+        Movie key = new Movie(0, "", 0, "", "", "");
+        key.movie_id = peliculas.get(high).movie_id;
+        key.movie_title = peliculas.get(high).movie_title;
+        key.duration = peliculas.get(high).duration;
+        key.color = peliculas.get(high).color;
+        key.language = peliculas.get(high).language;
+        key.country = peliculas.get(high).country;
+
+        // pivot
+        int pivot = peliculas.get(high).duration;
+
+        // Index of smaller element and
+        // indicates the right position
+        // of pivot found so far
+        int i = (low - 1);
+
+        for (int j = low; j <= high - 1; j++) {
+
+            // If current element is smaller
+            // than the pivot
+            if (peliculas.get(j).duration < pivot) {
+
+                // Increment index of
+                // smaller element
+                i++;
+                swap(peliculas, i, j);
+            }
+        }
+        swap(peliculas, i + 1, high);
+        return (i + 1);
+    }
+
+    /*
+     * The main function that implements QuickSort
+     * arr[] --> Array to be sorted,
+     * low --> Starting index,
+     * high --> Ending index
+     */
+    public static void sort(ArrayList<Movie> peliculas, int low, int high) {
+        if (low < high) {
+
+            // pi is partitioning index, arr[p]
+            // is now at right place
+            int pi = partition(peliculas, low, high);
+
+            // Separately sort elements before
+            // partition and after partition
+            sort(peliculas, low, pi - 1);
+            sort(peliculas, pi + 1, high);
+        }
+    }
+
+    public void generarArchivoCSV() {
+        // Scanner sc = new Scanner(System.in);
+        FileWriter fw;
+        try {
+            fw = new FileWriter(this.nombreArcEscritura);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(
+                    "movie_id,movie_title,duration,color,language,country\n");
+            String lineaTexto = "";
+            for (Movie c : this.peliculas) {
+                int text_movie_id = c.getMovie_id();
+                String text_movie_title = c.getMovie_title();
+                int text_duration = c.getDuration();
+                String text_color = c.getColor();
+                String text_language = c.getLanguage();
+                String text_country = c.getCountry();
+                // String text_content_rating = c.getContent_rating();
+                // int text_budget = c.getBudget();
+                // int text_title_year = c.getTitle_year();
+                // float text_imdb_score = c.getImdb_score();
+                // float text_aspect_ratio = c.getAspect_ratio();
+                // String text_movie_imdb_link = c.getMovie_imdb_link();
+
+                lineaTexto = text_movie_id + "," + text_movie_title + "," + text_duration + "," + text_color + "," +
+                        text_language + "," + text_country + "," + "\n";
+                bw.write(lineaTexto);
+            }
+            bw.flush();
+            bw.close();
+            fw.close();
+            JOptionPane.showMessageDialog(null, "Archivo creado exitosamente");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
