@@ -29,10 +29,39 @@ public class Ordenamiento {
     }
 
     public void elegirTipoOrdenamiento() {
-        //InsertionSort i = new InsertionSort(peliculas);
-        QuickSort q = new QuickSort(peliculas);
         //q.Quick(peliculas);
+        int seleccion = JOptionPane.showOptionDialog(
+        null,
+        "Seleccione opcion", 
+        "Selector de opciones",
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,    // null para icono por defecto.
+        new Object[] { "InsertionSort", "QuickSort", "RadixSort " },   // null para YES, NO y CANCEL
+        null);
+        seleccion+=1;
+        System.out.println(seleccion);
+
+        if(seleccion==1){
+            InsertionSort i = new InsertionSort(peliculas);
+            i.Insertion(peliculas);
+        }else{
+            if(seleccion==2){
+                
+                QuickSort q = new QuickSort(peliculas);
+                q.Quick(peliculas);
+            }else{
+                
+                RadixSort m = new RadixSort(peliculas);
+                int n= peliculas.size();
+                m.Radix(peliculas, n);
+
+            }
+        }
+
         
+
+        /*
         int reply = JOptionPane.showConfirmDialog(null,
         "¿Desea ordenar mediante el metodo de InsertionSort?",
         "Creacion del archivo CSV", JOptionPane.YES_NO_OPTION);
@@ -41,6 +70,7 @@ public class Ordenamiento {
        // i.Insertion(peliculas);
          }
          
+         */
     }
 
 }

@@ -1,15 +1,18 @@
+
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
-public class QuickSort {
+public class RadixSort {
     private ArrayList<Movie> peliculas;
-    private String nombreArcEscritura = "MovieQuick.csv";
+    private String nombreArcEscritura = "MovieRadix.csv";
 
-    public QuickSort(ArrayList<Movie> peliculas) {
+    public RadixSort(ArrayList<Movie> peliculas) {
         if (peliculas == null) {
             this.peliculas = new ArrayList<Movie>();
         } else {
@@ -17,16 +20,46 @@ public class QuickSort {
         }
     }
 
-    public void Quick(ArrayList<Movie> peliculas) {
-        System.out.println("---- quick sort ----"); // borrar despues
+    static int getMax(int array[], int n) {
+        int MAX = array[0];
 
-        sort(peliculas, 0, (peliculas.size() - 1));
+        for (int i = 1; i < n; i++){
+            if (array[i] > MAX){
+                MAX = array[i];
+            }
+        }
 
-        generarArchivoCSV();
 
+        return MAX;
+    }
+    public static void Radix(ArrayList<Movie> peliculas2, int n) {
+        int m = getMax(peliculas2, n);
+
+        for (int exp = 1; m / exp > 0; exp *= 10)
+            sort(peliculas2, n, exp);
     }
 
-   
+    static void sort(int arr[], int n, int exp) {
+        int output[] = new int[n];
+        int i;
+        int count[] = new int[10];
+        Arrays.fill(count, 0);
+
+        for (i = 0; i < n; i++)
+            count[(arr[i] / exp) % 10]++;
+
+        for (i = 1; i < 10; i++)
+            count[i] += count[i - 1];
+
+        for (i = n - 1; i >= 0; i--) {
+            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+            count[(arr[i] / exp) % 10]--;
+        }
+
+        for (i = 0; i < n; i++)
+            arr[i] = output[i];
+    }
+
     public static void swap(ArrayList<Movie> peliculas, int i, int j) {
         Movie key = new Movie(0, "", 0, "", "", "");
         key.movie_id = peliculas.get(i).movie_id;
@@ -63,66 +96,6 @@ public class QuickSort {
         peliculas.set(j, key);
     }
 
-    /*
-     * This function takes last element as pivot, places
-     * the pivot element at its correct position in sorted
-     * array, and places all smaller (smaller than pivot)
-     * to left of pivot and all greater elements to right
-     * of pivot
-     */
-    public static int partition(ArrayList<Movie> peliculas, int low, int high) {
-
-        Movie key = new Movie(0, "", 0, "", "", "");
-        key.movie_id = peliculas.get(high).movie_id;
-        key.movie_title = peliculas.get(high).movie_title;
-        key.duration = peliculas.get(high).duration;
-        key.color = peliculas.get(high).color;
-        key.language = peliculas.get(high).language;
-        key.country = peliculas.get(high).country;
-
-        // pivot
-        int pivot = peliculas.get(high).duration;
-
-        // Index of smaller element and
-        // indicates the right position
-        // of pivot found so far
-        int i = (low - 1);
-
-        for (int j = low; j <= high - 1; j++) {
-
-            // If current element is smaller
-            // than the pivot
-            if (peliculas.get(j).duration < pivot) {
-
-                // Increment index of
-                // smaller element
-                i++;
-                swap(peliculas, i, j);
-            }
-        }
-        swap(peliculas, i + 1, high);
-        return (i + 1);
-    }
-
-    /*
-     * The main function that implements QuickSort
-     * arr[] --> Array to be sorted,
-     * low --> Starting index,
-     * high --> Ending index
-     */
-    public static void sort(ArrayList<Movie> peliculas, int low, int high) {
-        if (low < high) {
-
-            // pi is partitioning index, arr[p]
-            // is now at right place
-            int pi = partition(peliculas, low, high);
-
-            // Separately sort elements before
-            // partition and after partition
-            sort(peliculas, low, pi - 1);
-            sort(peliculas, pi + 1, high);
-        }
-    }
 
     public void generarArchivoCSV() {
         // Scanner sc = new Scanner(System.in);
@@ -160,30 +133,6 @@ public class QuickSort {
         }
 
     }
-/*
-    public static void main(String[] args) {
-        String Origen = "C:\\repos\\EstructuraADA06_E3";
-        String NombreArcLectura = Origen + "\\Movie.csv";
-        String nombreArcEscritura = Origen + "\\MovieQuick.csv";
-        
 
-        ArrayList<Movie> peliculas = new ArrayList<Movie>();
-        QuickSort q = new QuickSort(peliculas);
-        System.out.println("hola");
-        controladorCSV c = new controladorCSV(NombreArcLectura, nombreArcEscritura, peliculas);
-        Ordenamiento o = new Ordenamiento(peliculas);
-
-        c.leerArchivoCSV(); // lee el archivo
-        o.mostrarPeliculas(); // imprime el listado de peliculas
-
-        if (c.noVacio && c.numColumnas) {
-            //o.elegirTipoOrdenamiento();
-            q.Quick(peliculas);
-            
-            o.mostrarPeliculas(); // imprime el listado de peliculas
-
-            JOptionPane.showMessageDialog(null, "Fin del proceso");
-        }
-    }
-    */
+    
 }
