@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Main {
+    
     public static void main(String[] args) {
         String Origen = "C:\\repos\\EstructuraADA06_E3";
         String NombreArcLectura = Origen + "\\Movie.csv";
