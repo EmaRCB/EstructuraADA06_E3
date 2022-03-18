@@ -26,6 +26,7 @@ public class QuickSort {
 
     }
 
+   
     public static void swap(ArrayList<Movie> peliculas, int i, int j) {
         Movie key = new Movie(0, "", 0, "", "", "");
         key.movie_id = peliculas.get(i).movie_id;
@@ -38,6 +39,27 @@ public class QuickSort {
         int temp = peliculas.get(i).duration;
         peliculas.get(i).duration = peliculas.get(j).duration;
         peliculas.get(j).duration = temp;
+
+        String temp2 = peliculas.get(i).color;
+        peliculas.get(i).color = peliculas.get(j).color;
+        peliculas.get(j).color = temp2;
+
+        String temp3 = peliculas.get(i).country;
+        peliculas.get(i).country = peliculas.get(j).country;
+        peliculas.get(j).country = temp3;
+
+        String temp4 = peliculas.get(i).language;
+        peliculas.get(i).language = peliculas.get(j).language;
+        peliculas.get(j).language = temp4;
+
+        int temp5 = peliculas.get(i).movie_id;
+        peliculas.get(i).movie_id = peliculas.get(j).movie_id;
+        peliculas.get(j).movie_id = temp5;
+
+        String temp6 = peliculas.get(i).movie_title;
+        peliculas.get(i).movie_title = peliculas.get(j).movie_title;
+        peliculas.get(j).movie_title = temp6;
+
         peliculas.set(j, key);
     }
 
@@ -137,5 +159,30 @@ public class QuickSort {
             e.printStackTrace();
         }
 
+    }
+
+    public static void main(String[] args) {
+        String Origen = "C:\\repos\\EstructuraADA06_E3";
+        String NombreArcLectura = Origen + "\\Movie.csv";
+        String nombreArcEscritura = Origen + "\\MovieQuick.csv";
+        
+
+        ArrayList<Movie> peliculas = new ArrayList<Movie>();
+        QuickSort q = new QuickSort(peliculas);
+        System.out.println("hola");
+        controladorCSV c = new controladorCSV(NombreArcLectura, nombreArcEscritura, peliculas);
+        Ordenamiento o = new Ordenamiento(peliculas);
+
+        c.leerArchivoCSV(); // lee el archivo
+        o.mostrarPeliculas(); // imprime el listado de peliculas
+
+        if (c.noVacio && c.numColumnas) {
+            //o.elegirTipoOrdenamiento();
+            q.Quick(peliculas);
+            
+            o.mostrarPeliculas(); // imprime el listado de peliculas
+
+            JOptionPane.showMessageDialog(null, "Fin del proceso");
+        }
     }
 }

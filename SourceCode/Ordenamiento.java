@@ -29,17 +29,18 @@ public class Ordenamiento {
     }
 
     public void elegirTipoOrdenamiento() {
-        InsertionSort i = new InsertionSort(peliculas);
+        //InsertionSort i = new InsertionSort(peliculas);
         QuickSort q = new QuickSort(peliculas);
-        q.Quick(peliculas);
-        /*
-         * int reply = JOptionPane.showConfirmDialog(null,
-         * "¿Desea ordenar mediante el metodo de InsertionSort?",
-         * "Creacion del archivo CSV", JOptionPane.YES_NO_OPTION);
-         * if (reply == JOptionPane.YES_OPTION) {
-         * i.Insertion(peliculas);
-         * }
-         */
+        //q.Quick(peliculas);
+        
+        int reply = JOptionPane.showConfirmDialog(null,
+        "¿Desea ordenar mediante el metodo de InsertionSort?",
+        "Creacion del archivo CSV", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            q.Quick(peliculas);
+       // i.Insertion(peliculas);
+         }
+         
     }
 
 }

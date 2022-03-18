@@ -23,7 +23,7 @@ public class InsertionSort {
     public void Insertion(ArrayList<Movie> peliculas) {
         System.out.println("---- insertion sort ----"); // borrar despues
 
-        // metodo de ordenamiento
+        // metodo de ordenamiento InsertionSort
         int i, j;
 
         for (i = 1; i < peliculas.size(); i++) {
