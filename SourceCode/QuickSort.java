@@ -20,7 +20,7 @@ public class QuickSort {
     }
 
     public void Quick(ArrayList<Movie> peliculas) {
-        System.out.println("---- quick sort ----"); // borrar despues
+        System.out.println("---- quick sort ----"); // boorrar despues
 
         sort(peliculas, 0, (peliculas.size() - 1));
 

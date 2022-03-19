@@ -240,7 +240,7 @@ public class Movie {
      */
     @Override
     public String toString() {
-        return "Movie [movie_id=" + movie_id + ", movie_title=" + movie_title + ", duration=" + duration + ", color="
+        return "Movie [movie_id =" + movie_id + ", movie_title=" + movie_title + ", duration=" + duration + ", color="
                 + color
                 + ", language=" + language + ", country=" + country + ", content_rating="
                 + content_rating + ", budget=" + budget + ", title_year=" + title_year + ", imdb_score=" + imdb_score

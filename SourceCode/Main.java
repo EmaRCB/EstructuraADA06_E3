@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Main {
-    
+
     public static void main(String[] args) {
         String Origen = "C:\\Users\\BlueW\\OneDrive - Universidad Autonoma de Yucatan\\Desktop\\Uni\\EstructuraDatos\\ADA06_E3\\EstructuraADA06_E3";
         String NombreArcLectura = Origen + "\\Movie.csv";
         String nombreArcEscritura = Origen + "\\MovieFinal.csv";
 
         ArrayList<Movie> peliculas = new ArrayList<Movie>();
-        System.out.println("hola");
+        System.out.println(" hola");
         controladorCSV c = new controladorCSV(NombreArcLectura, nombreArcEscritura, peliculas);
         Ordenamiento o = new Ordenamiento(peliculas);
 

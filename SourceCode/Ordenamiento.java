@@ -37,7 +37,7 @@ public class Ordenamiento {
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono por defecto.
-                new Object[] { "InsertionSort", "QuickSort", "RadixSort " }, // null para YES, NO y CANCEL
+                new Object[] { "InsertionSort", "QuickSort", "RadixSort " }, // null para YESS, NO y CANCEL
                 null);
         seleccion += 1;
         System.out.println(seleccion);

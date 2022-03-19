@@ -21,13 +21,14 @@ public class controladorCSV {
     public controladorCSV(String nombreArcLectura, String nombreArcEscritura, ArrayList<Movie> peliculas) {
         this.nombreArcLectura = nombreArcLectura;
         this.nombreArcEscritura = nombreArcEscritura;
-        
+
         if (peliculas == null) {
             this.peliculas = new ArrayList<Movie>();
         } else {
             this.peliculas = peliculas;
         }
     }
+
     public void leerArchivoCSV() {
         FileReader fr;
         try {
@@ -37,7 +38,7 @@ public class controladorCSV {
             int skip = 0;
             while ((linea = br.readLine()) != null) {
                 noVacio = true;
-                String[] datosLinea = linea.split(","); // lee una nueva celda cuando lee una coma
+                String[] datosLinea = linea.split(","); // lee una nueva celdaa cuando lee una coma
 
                 if (datosLinea.length != 12) {
                     numColumnas = true;
@@ -131,6 +132,4 @@ public class controladorCSV {
 
     }
 
-
- 
 }
