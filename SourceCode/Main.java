@@ -10,6 +10,7 @@ public class Main {
         String nombreArcEscritura = Origen + "\\MoviesOrdenado";
 
         ArrayList<Movie> peliculas = new ArrayList<Movie>();
+
         controladorCSV c = new controladorCSV(NombreArcLectura, nombreArcEscritura, peliculas);
         Ordenamiento o = new Ordenamiento(peliculas, nombreArcEscritura);
 
@@ -22,7 +23,7 @@ public class Main {
 
             long endTime = System.currentTimeMillis();
             long timeElapsed = endTime - startTime;
-            JOptionPane.showMessageDialog(null, "Fin del proceso. \nTiempo de ejecución: " + timeElapsed);
+            JOptionPane.showMessageDialog(null, "Fin del proceso\nTiempo de ejecución: " + timeElapsed);
         }
     }
 }

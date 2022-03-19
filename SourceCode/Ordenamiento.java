@@ -39,7 +39,6 @@ public class Ordenamiento {
                 new Object[] { "InsertionSort", "QuickSort", "RadixSort " }, // null para YESS, NO y CANCEL
                 null);
         seleccion += 1;
-        System.out.println(seleccion);
 
         if (seleccion == 1) {
             InsertionSort i = new InsertionSort(peliculas, nombreArcEscritura);

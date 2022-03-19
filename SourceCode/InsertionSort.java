@@ -21,7 +21,7 @@ public class InsertionSort {
     }
 
     public void Insertion(ArrayList<Movie> peliculas) {
-        System.out.println("---- insertion sort ----"); // boorrar despues
+        System.out.println("---- insertion sort ----");
 
         // metodo de ordenamiento InsertionSort
         int i, j;
