@@ -4,14 +4,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
 public class RadixSort {
     private ArrayList<Movie> peliculas;
-    private String nombreArcEscritura = "MovieRadix.csv";
+    private String nombreArcEscritura;
+    public static int numComp = 0;
+    public static int numInt = 0;
 
-    public RadixSort(ArrayList<Movie> peliculas) {
+    public RadixSort(ArrayList<Movie> peliculas, String nombreArcEscritura) {
+        this.nombreArcEscritura = nombreArcEscritura;
         if (peliculas == null) {
             this.peliculas = new ArrayList<Movie>();
         } else {
@@ -23,7 +27,27 @@ public class RadixSort {
         System.out.println("---- radix sort ----");
         int n = peliculas.size();
         sort(peliculas, n);
-        generarArchivoCSV();
+
+        int decision = JOptionPane.showOptionDialog(
+                null,
+                "Seleccione opcion",
+                "Selector de opciones",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[] { "Ascendente", "Descendente" },
+                null);
+
+        if (decision == 1) {
+            Collections.reverse(peliculas);
+            generarArchivoCSV();
+        } else {
+            generarArchivoCSV();
+        }
+
+        // Imprime el numero de comparaciones e intercambios
+        JOptionPane.showMessageDialog(null,
+                "Numero de comparaciones: " + numComp + "\nNumero de intercambios: " + numInt);
 
     }
 
@@ -38,14 +62,12 @@ public class RadixSort {
         key.language = peliculas.get(i).language;
         key.country = peliculas.get(i).country;
 
-        // Find the maximum number to know number off digits
+        // Encuentra el num. maximo
         int m = getMax(peliculas, n);
 
-        // Do counting sort for every digit. Note that
-        // instead of passing digit number, exp is passed.
-        // exp is 10^i where i is current digit number
         for (int exp = 1; m / exp > 0; exp *= 10) {
             countSort(peliculas, n, exp);
+
         }
 
     }
@@ -81,23 +103,20 @@ public class RadixSort {
         key.language = peliculas.get(i).language;
         key.country = peliculas.get(i).country;
 
-        // Store count of occurrences in count[]
         for (i = 0; i < n; i++)
             count[(peliculas.get(i).duration / exp) % 10]++;
 
-        // Change count[i] so that count[i] now contains
-        // actual position of this digit in output[]
-        for (i = 1; i < 10; i++)
+        for (i = 1; i < 10; i++) {
             count[i] += count[i - 1];
+            numInt++;
+        }
 
-        // Build the output array
         for (i = n - 1; i >= 0; i--) {
             output[count[(peliculas.get(i).duration / exp) % 10] - 1] = peliculas.get(i).duration;
+            numComp++;
             count[(peliculas.get(i).duration / exp) % 10]--;
         }
 
-        // Copy the output array to arr[], so that arr[] now
-        // contains sorted numbers according to current digit
         for (i = 0; i < n; i++)
             peliculas.get(i).duration = output[i];
     }
@@ -106,7 +125,7 @@ public class RadixSort {
         // Scanner sc = new Scanner(System.in);
         FileWriter fw;
         try {
-            fw = new FileWriter(this.nombreArcEscritura);
+            fw = new FileWriter(this.nombreArcEscritura + "RadixSort.csv");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(
                     "movie_id,movie_title,duration,color,language,country\n");

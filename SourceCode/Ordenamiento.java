@@ -50,7 +50,7 @@ public class Ordenamiento {
                 q.Quick(peliculas);
             } else {
 
-                RadixSort m = new RadixSort(peliculas);
+                RadixSort m = new RadixSort(peliculas, nombreArcEscritura);
                 m.Radix(peliculas);
 
             }

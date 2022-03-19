@@ -22,7 +22,7 @@ public class QuickSort {
     }
 
     public void Quick(ArrayList<Movie> peliculas) {
-        System.out.println("---- quick sort ----"); // boorrar despues
+        System.out.println("---- quick sort ----");
 
         sort(peliculas, 0, (peliculas.size() - 1));
 
@@ -100,19 +100,13 @@ public class QuickSort {
         // pivot
         int pivot = peliculas.get(high).budget;
 
-        // Index of smaller element and
-        // indicates the right position
-        // of pivot found so far
         int i = (low - 1);
 
         for (int j = low; j <= high - 1; j++) {
 
-            // If current element is smaller
-            // than the pivot
+            // Si el elemento actual es menor que el pivote
             if (peliculas.get(j).budget < pivot) {
 
-                // Increment index of
-                // smaller element
                 i++;
                 swap(peliculas, i, j);
                 numInt++;
@@ -126,12 +120,6 @@ public class QuickSort {
         return (i + 1);
     }
 
-    /*
-     * The main function that implements QuickSort
-     * arr[] --> Array to be sorted,
-     * low --> Starting index,
-     * high --> Ending index
-     */
     public static void sort(ArrayList<Movie> peliculas, int low, int high) {
         if (low < high) {
 
@@ -182,31 +170,5 @@ public class QuickSort {
         }
 
     }
-    /*
-     * public static void main(String[] args) {
-     * String Origen = "C:\\repos\\EstructuraADA06_E3";
-     * String NombreArcLectura = Origen + "\\Movie.csv";
-     * String nombreArcEscritura = Origen + "\\MovieQuick.csv";
-     * 
-     * 
-     * ArrayList<Movie> peliculas = new ArrayList<Movie>();
-     * QuickSort q = new QuickSort(peliculas);
-     * System.out.println("hola");
-     * controladorCSV c = new controladorCSV(NombreArcLectura, nombreArcEscritura,
-     * peliculas);
-     * Ordenamiento o = new Ordenamiento(peliculas);
-     * 
-     * c.leerArchivoCSV(); // lee el archivo
-     * o.mostrarPeliculas(); // imprime el listado de peliculas
-     * 
-     * if (c.noVacio && c.numColumnas) {
-     * //o.elegirTipoOrdenamiento();
-     * q.Quick(peliculas);
-     * 
-     * o.mostrarPeliculas(); // imprime el listado de peliculas
-     * 
-     * JOptionPane.showMessageDialog(null, "Fin del proceso");
-     * }
-     * }
-     */
+
 }
