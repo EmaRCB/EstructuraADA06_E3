@@ -2,16 +2,18 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
 public class QuickSort {
     private ArrayList<Movie> peliculas;
-    private String nombreArcEscritura = "MovieQuick.csv";
+    private String nombreArcEscritura;
     public static int numComp = 0;
     public static int numInt = 0;
 
-    public QuickSort(ArrayList<Movie> peliculas) {
+    public QuickSort(ArrayList<Movie> peliculas, String nombreArcEscritura) {
+        this.nombreArcEscritura = nombreArcEscritura;
         if (peliculas == null) {
             this.peliculas = new ArrayList<Movie>();
         } else {
@@ -24,10 +26,27 @@ public class QuickSort {
 
         sort(peliculas, 0, (peliculas.size() - 1));
 
-        generarArchivoCSV();
+        // El usuario decide si ordena en manera ascendente o descendente
+        int decision = JOptionPane.showOptionDialog(
+                null,
+                "Seleccione opcion",
+                "Selector de opciones",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[] { "Ascendente", "Descendente" }, // null para YESS, NO y CANCEL
+                null);
 
-        System.out.println("numero de comparaciones: " + numComp);
-        System.out.println("numero de intercambios: " + numInt);
+        if (decision == 1) {
+            Collections.reverse(peliculas);
+            generarArchivoCSV();
+        } else {
+            generarArchivoCSV();
+        }
+
+        // Imprime el numero de comparaciones e intercambios
+        JOptionPane.showMessageDialog(null,
+                "Numero de comparaciones: " + numComp + "\nNumero de intercambios: " + numInt);
 
     }
 
@@ -131,7 +150,7 @@ public class QuickSort {
         // Scanner sc = new Scanner(System.in);
         FileWriter fw;
         try {
-            fw = new FileWriter(this.nombreArcEscritura);
+            fw = new FileWriter(this.nombreArcEscritura + "QuickSort.csv");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(
                     "movie_id,movie_title,color,language,country,budget\n");

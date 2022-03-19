@@ -2,16 +2,17 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.Collections;
 import javax.swing.JOptionPane;
 
 public class InsertionSort {
     private ArrayList<Movie> peliculas;
-    private String nombreArcEscritura = "MovieInsertion.csv";
+    private String nombreArcEscritura;
     public int numComp = 0;
     public int numInt = 0;
 
-    public InsertionSort(ArrayList<Movie> peliculas) {
+    public InsertionSort(ArrayList<Movie> peliculas, String nombreArcEscritura) {
+        this.nombreArcEscritura = nombreArcEscritura;
         if (peliculas == null) {
             this.peliculas = new ArrayList<Movie>();
         } else {
@@ -47,17 +48,33 @@ public class InsertionSort {
             peliculas.set(j, key);
         }
 
-        System.out.println("numero de comparaciones: " + numComp);
-        System.out.println("numero de intercambios: " + numInt);
+        // El usuario decide si ordena en manera ascendente o descendente
+        int decision = JOptionPane.showOptionDialog(
+                null,
+                "Seleccione opcion",
+                "Selector de opciones",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[] { "Ascendente", "Descendente" }, // null para YESS, NO y CANCEL
+                null);
 
-        generarArchivoCSV();
+        if (decision == 1) {
+            Collections.reverse(peliculas);
+            generarArchivoCSV();
+        } else {
+            generarArchivoCSV();
+        }
+
+        // Imprime el numero de comparaciones e intercambios
+        JOptionPane.showMessageDialog(null,
+                "Numero de comparaciones: " + numComp + "\nNumero de intercambios: " + numInt);
     }
 
     public void generarArchivoCSV() {
-        // Scanner sc = new Scanner(System.in);
         FileWriter fw;
         try {
-            fw = new FileWriter(this.nombreArcEscritura);
+            fw = new FileWriter(this.nombreArcEscritura + "InsertionSort.csv");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(
                     "movie_id,movie_title,duration,color,language,country\n");
@@ -69,12 +86,6 @@ public class InsertionSort {
                 String text_color = c.getColor();
                 String text_language = c.getLanguage();
                 String text_country = c.getCountry();
-                // String text_content_rating = c.getContent_rating();
-                // int text_budget = c.getBudget();
-                // int text_title_year = c.getTitle_year();
-                // float text_imdb_score = c.getImdb_score();
-                // float text_aspect_ratio = c.getAspect_ratio();
-                // String text_movie_imdb_link = c.getMovie_imdb_link();
 
                 lineaTexto = text_movie_id + "," + text_movie_title + "," + text_duration + "," + text_color + "," +
                         text_language + "," + text_country + "," + "\n";
