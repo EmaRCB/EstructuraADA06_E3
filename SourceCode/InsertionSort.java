@@ -38,10 +38,12 @@ public class InsertionSort {
             while ((j > 0) && (peliculas.get(j - 1).duration > key.duration)) {
                 peliculas.set(j, peliculas.get(j - 1));
                 j--;
-                numComp++;
-                numInt++;
+                numComp++; // aumenta uno al numero de comparaciones
+                numInt++; // aumento uno al numero de intercambios
             }
-            numComp++;
+            if (j > 0) {
+                numComp++; // aumenta uno al numero de comparaciones
+            }
             peliculas.set(j, key);
         }
 

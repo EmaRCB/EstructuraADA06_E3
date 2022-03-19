@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         String Origen = "C:\\Users\\BlueW\\OneDrive - Universidad Autonoma de Yucatan\\Desktop\\Uni\\EstructuraDatos\\ADA06_E3\\EstructuraADA06_E3";
-        String NombreArcLectura = Origen + "\\Movie.csv";
+        String NombreArcLectura = Origen + "\\Movieprueba.csv";
         String nombreArcEscritura = Origen + "\\MovieFinal.csv";
 
         ArrayList<Movie> peliculas = new ArrayList<Movie>();

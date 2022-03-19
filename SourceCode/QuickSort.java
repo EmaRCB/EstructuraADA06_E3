@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 public class QuickSort {
     private ArrayList<Movie> peliculas;
     private String nombreArcEscritura = "MovieQuick.csv";
-    public int numComp = 0;
-    public int numInt = 0;
+    public static int numComp = 0;
+    public static int numInt = 0;
 
     public QuickSort(ArrayList<Movie> peliculas) {
         if (peliculas == null) {
@@ -64,16 +64,10 @@ public class QuickSort {
         peliculas.get(i).movie_title = peliculas.get(j).movie_title;
         peliculas.get(j).movie_title = temp6;
 
+        // numInt++; // aumenta uno al numero de comparaciones
         peliculas.set(j, key);
     }
 
-    /*
-     * This function takes last element as pivot, places
-     * the pivot element at its correct position in sorted
-     * array, and places all smaller (smaller than pivot)
-     * to left of pivot and all greater elements to right
-     * of pivot
-     */
     public static int partition(ArrayList<Movie> peliculas, int low, int high) {
 
         Movie key = new Movie(0, "", 0, "", "", "");
@@ -102,7 +96,12 @@ public class QuickSort {
                 // smaller element
                 i++;
                 swap(peliculas, i, j);
+                numInt++;
             }
+            numComp++;
+        }
+        if (pivot > 0) {
+            numComp++; // aumenta uno al numero de comparaciones
         }
         swap(peliculas, i + 1, high);
         return (i + 1);
