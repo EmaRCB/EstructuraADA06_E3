@@ -2,16 +2,18 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
 public class QuickSort {
     private ArrayList<Movie> peliculas;
-    private String nombreArcEscritura = "MovieQuick.csv";
-    public int numComp = 0;
-    public int numInt = 0;
+    private String nombreArcEscritura;
+    public static int numComp = 0;
+    public static int numInt = 0;
 
-    public QuickSort(ArrayList<Movie> peliculas) {
+    public QuickSort(ArrayList<Movie> peliculas, String nombreArcEscritura) {
+        this.nombreArcEscritura = nombreArcEscritura;
         if (peliculas == null) {
             this.peliculas = new ArrayList<Movie>();
         } else {
@@ -24,10 +26,27 @@ public class QuickSort {
 
         sort(peliculas, 0, (peliculas.size() - 1));
 
-        generarArchivoCSV();
+        // El usuario decide si ordena en manera ascendente o descendente
+        int decision = JOptionPane.showOptionDialog(
+                null,
+                "Seleccione opcion",
+                "Selector de opciones",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[] { "Ascendente", "Descendente" }, // null para YESS, NO y CANCEL
+                null);
 
-        System.out.println("numero de comparaciones: " + numComp);
-        System.out.println("numero de intercambios: " + numInt);
+        if (decision == 1) {
+            Collections.reverse(peliculas);
+            generarArchivoCSV();
+        } else {
+            generarArchivoCSV();
+        }
+
+        // Imprime el numero de comparaciones e intercambios
+        JOptionPane.showMessageDialog(null,
+                "Numero de comparaciones: " + numComp + "\nNumero de intercambios: " + numInt);
 
     }
 
@@ -64,16 +83,10 @@ public class QuickSort {
         peliculas.get(i).movie_title = peliculas.get(j).movie_title;
         peliculas.get(j).movie_title = temp6;
 
+        // numInt++; // aumenta uno al numero de comparaciones
         peliculas.set(j, key);
     }
 
-    /*
-     * This function takes last element as pivot, places
-     * the pivot element at its correct position in sorted
-     * array, and places all smaller (smaller than pivot)
-     * to left of pivot and all greater elements to right
-     * of pivot
-     */
     public static int partition(ArrayList<Movie> peliculas, int low, int high) {
 
         Movie key = new Movie(0, "", 0, "", "", "");
@@ -102,7 +115,12 @@ public class QuickSort {
                 // smaller element
                 i++;
                 swap(peliculas, i, j);
+                numInt++;
             }
+            numComp++;
+        }
+        if (pivot > 0) {
+            numComp++; // aumenta uno al numero de comparaciones
         }
         swap(peliculas, i + 1, high);
         return (i + 1);
@@ -132,7 +150,7 @@ public class QuickSort {
         // Scanner sc = new Scanner(System.in);
         FileWriter fw;
         try {
-            fw = new FileWriter(this.nombreArcEscritura);
+            fw = new FileWriter(this.nombreArcEscritura + "QuickSort.csv");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(
                     "movie_id,movie_title,color,language,country,budget\n");

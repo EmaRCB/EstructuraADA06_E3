@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Ordenamiento {
-    private String NombreArcLectura;
-    private String NombreArcEscritura;
     private ArrayList<Movie> peliculas;
 
     boolean noVacio = false;
     boolean numColumnas = false;
     boolean procesoCompletado = false;
+    private String nombreArcEscritura;
 
-    public Ordenamiento(ArrayList<Movie> peliculas) {
-
+    public Ordenamiento(ArrayList<Movie> peliculas, String nombreArcEscritura) {
+        this.nombreArcEscritura = nombreArcEscritura;
         if (peliculas == null) {
             this.peliculas = new ArrayList<Movie>();
         } else {
@@ -43,12 +42,12 @@ public class Ordenamiento {
         System.out.println(seleccion);
 
         if (seleccion == 1) {
-            InsertionSort i = new InsertionSort(peliculas);
+            InsertionSort i = new InsertionSort(peliculas, nombreArcEscritura);
             i.Insertion(peliculas);
         } else {
             if (seleccion == 2) {
 
-                QuickSort q = new QuickSort(peliculas);
+                QuickSort q = new QuickSort(peliculas, nombreArcEscritura);
                 q.Quick(peliculas);
             } else {
 
@@ -58,16 +57,6 @@ public class Ordenamiento {
             }
         }
 
-        /*
-         * int reply = JOptionPane.showConfirmDialog(null,
-         * "¿Desea ordenar mediante el metodo de InsertionSort?",
-         * "Creacion del archivo CSV", JOptionPane.YES_NO_OPTION);
-         * if (reply == JOptionPane.YES_OPTION) {
-         * q.Quick(peliculas);
-         * // i.Insertion(peliculas);
-         * }
-         * 
-         */
     }
 
 }
